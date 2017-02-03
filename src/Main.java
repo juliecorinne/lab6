@@ -8,8 +8,8 @@ public class Main {
         String vowels = "aeiouAEIOU";
         int i;
         char a;
-        int split = 0;
         String beforeSplit = "";
+        String userInput = "";
 
         Scanner scan = new Scanner(System.in);
 
@@ -23,9 +23,14 @@ public class Main {
         String lowerCase = pigLatinWord.toLowerCase();
         a = Character.toLowerCase(pigLatinWord.charAt(0));
 
-        if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u') {
 
-            System.out.println(pigLatinWord + "way");
+
+        do {
+
+
+             if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u') {
+
+                System.out.println(pigLatinWord + "way");
 
         } else {
 
@@ -33,17 +38,21 @@ public class Main {
 
                 if (vowels.contains(String.valueOf(lowerCase.charAt(i)))){
 
-                    split = i;
-                    beforeSplit = pigLatinWord.substring(lowerCase.indexOf(split), split);
-                    //beforeSplit = pigLatinWord.substring(split, lowerCase.indexOf(i));
-                    System.out.println(pigLatinWord.substring(split) + beforeSplit + "ay");
+                    beforeSplit = pigLatinWord.substring(0, i);
+                    System.out.println(pigLatinWord.substring(i) + beforeSplit + "ay");
+                    System.out.println();
                     break;
-
                 }
 
             }
 
         }
+
+            System.out.println("Would you like to continue? yes/no");
+            scan.nextLine();
+            userInput = scan.nextLine();
+
+        } while (userInput.equalsIgnoreCase("yes"));
 
     }
 
