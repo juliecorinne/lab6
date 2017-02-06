@@ -9,7 +9,7 @@ public class Main {
         int i;
         char a;
         String beforeSplit = "";
-        String userInput = "";
+        String userInput;
 
         Scanner scan = new Scanner(System.in);
 
@@ -17,31 +17,28 @@ public class Main {
         System.out.println();
         System.out.println("Since it's a very useful and popular language, I'm assuming you'd like to translate some words.");
         System.out.println();
-        System.out.println("Enter a word to be translated: ");
-        pigLatinWord = scan.nextLine();
-
-        String lowerCase = pigLatinWord.toLowerCase();
-        a = Character.toLowerCase(pigLatinWord.charAt(0));
-
-
 
         do {
 
+            System.out.println("Enter a word to be translated: ");
+            pigLatinWord = scan.nextLine();
+            String lowerCase = pigLatinWord.toLowerCase();
+            a = Character.toLowerCase(pigLatinWord.charAt(0));
+            System.out.println();
 
              if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u') {
 
                 System.out.println(pigLatinWord + "way");
+                System.out.println();
 
-        } else {
+            } else {
 
-            for (i = 0; i < lowerCase.length(); i++){
+                for (i = 0; i < lowerCase.length(); i++){
 
-                if (vowels.contains(String.valueOf(lowerCase.charAt(i)))){
+                    if (vowels.contains(String.valueOf(lowerCase.charAt(i)))){
 
-                    beforeSplit = pigLatinWord.substring(0, i);
-                    System.out.println(pigLatinWord.substring(i) + beforeSplit + "ay");
-                    System.out.println();
-                    break;
+                        split(pigLatinWord, i);
+                        break;
                 }
 
             }
@@ -49,11 +46,19 @@ public class Main {
         }
 
             System.out.println("Would you like to continue? yes/no");
-            scan.nextLine();
             userInput = scan.nextLine();
 
         } while (userInput.equalsIgnoreCase("yes"));
 
+        System.out.println("Bye!");
+
+    }
+
+    private static void split(String pigLatinWord, int i) {
+        String beforeSplit;
+        beforeSplit = pigLatinWord.substring(0, i);
+        System.out.println(pigLatinWord.substring(i) + beforeSplit + "ay");
+        System.out.println();
     }
 
 }
